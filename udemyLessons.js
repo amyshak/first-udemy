@@ -5,7 +5,7 @@
 // ·      Первая будет спрашивать "Ваш бюджет на месяц?"
 
 // ·      Вторая "Введите дату в формате YYYY-MM-DD"
-let money = prompt ('Ваш бюджет на месяц?', 'Бюджет');
+let money = +prompt('Ваш бюджет на месяц?', 'Бюджет');
 let time = prompt('Введите дату в формате YYYY-MM-DD', 'YYYY-MM-DD');
 
 
@@ -31,8 +31,8 @@ let appData = {
     optionalExpenses: {},
     income: [],
     savings: false
-     
- };
+
+};
 //  console.log(appData);
 // 4) Задать пользователю по 2 раза вопросы:
 
@@ -68,22 +68,68 @@ let appData = {
 //     }
 
 // Мы передали содержимое переменных как свойство и значение во внутрь объекта.
-let first = prompt ('Введите обязательную статью расходов в этом месяце', '');
-let one = prompt('Во сколько обойдется?','');
-let second = prompt ('Введите обязательную статью расходов в этом месяце', '');
-let two= prompt('Во сколько обойдется?','');
-appData.expenses.first = one;
-appData.expenses.second = two;
+
+// for (let i = 0; i < 2; i++) {
+//     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
+//         b = prompt('Во сколько обойдется?', '');
+//     if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null &&
+//         a != '' && b != '' && a.length < 50) {
+//         console.log('done');
+//         appData.expenses[a] = b;
+//     } else {
+//         console.log('something wrong')
+//     }
+// }
+// OR 
+
+// let i = 0;
+// while (i < 2) {
+//     let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
+//         b = prompt('Во сколько обойдется?', '');
+//      i++;
+//     if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null &&
+//         a != '' && b != '' && a.length < 50) {
+//         console.log('done');
+//         appData.expenses[a] = b;
+//     } else {
+//         console.log('something wrong')
+//     }
+// }
+
+let i = 0;
+do {
+    let a = prompt('Введите обязательную статью расходов в этом месяце', ''),
+        b = prompt('Во сколько обойдется?', '');
+     i++;
+    if (typeof (a) === 'string' && typeof (a) != null && typeof (b) != null &&
+        a != '' && b != '' && a.length < 50) {
+        console.log('done');
+        appData.expenses[a] = b;
+    } else {
+        console.log('something wrong')
+    }
+} while (i < 2);
 
 // console.log(appData);
 
-    //         “”);
+//         “”);
 // 5) Вывести на экран пользователя бюджет на 1 день (брать месяц за 30 дней, использовать alert)
 
-alert (appData.budget/30);
+appData.moneyPerDay = appData.budget / 30;
+alert('Ежедневный бюджет ' + appData.moneyPerDay);
+
+if (appData.moneyPerDay < 100) {
+    alert('Низкий уровень дохода');
+
+} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+    alert('Средний уровень дохода');
+} else if (appData.moneyPerDay > 2000) {
+    alert('Высокий уровень дохода');
+
+}
+
+
 
 // 6) Проверить, чтобы все работало без ошибок в консоли
 
 // 7) Создать свой репозиторий на GitHub и поместить туда папку с первым заданием
-
-
