@@ -61,21 +61,24 @@ chooseExp ();
 function detectDayBudget () {
     appData.moneyPerDay= (appData.budget / 30).toFixed();
 alert('Ежедневный бюджет ' + appData.moneyPerDay);
-
-if (appData.moneyPerDay < 100) {
-    alert('Низкий уровень дохода');
-
-} else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
-    alert('Средний уровень дохода');
-} else if (appData.moneyPerDay > 2000) {
-    alert('Высокий уровень дохода');
-
-} else {alert ("Error")
-}
 }
 detectDayBudget ();
 
-function detectLevel() {
+function detectLevel(){
+    if (appData.moneyPerDay < 100) {
+        alert('Низкий уровень дохода');
+    
+    } else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+        alert('Средний уровень дохода');
+    } else if (appData.moneyPerDay > 2000) {
+        alert('Высокий уровень дохода');
+    
+    } else {alert ("Error")
+    }
+}
+detectLevel();
+
+function checkSavings() {
     if (appData.savings === true) {
         let c = +prompt('Процент от депозита', ''),
             d = +prompt('Сумма на депозите', '');
@@ -86,7 +89,18 @@ function detectLevel() {
 
     // }
 }
-detectLevel ();
+checkSavings();
+
+function detectSavings () {
+    if (appData.income < 100) {
+        alert('Низкий уровень сбережений');
+    } else if (appData.income > 100 && appData.income < 3000){
+        alert ('Not bad!');
+    } else if (appData.income > 3000) {
+        alert ('Wow! you"re good!');
+    } else { alert('Bla bla');}
+}
+detectSavings ();
 
 function chooseOptExpenses() {
     let i = 0;
