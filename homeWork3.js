@@ -111,11 +111,17 @@ let appData = {
 
     chooseIncome: function () {
         let items = prompt('What can bring you additional income? Divide your answers by comma.', '');
-        appData.income = items.split(', ');
-        appData.income.push(prompt('Something else?', ''));
-        appData.income.sort();
-        // (typeof (items) != 'string' && typeof (items) === null && items === '');
+        if (typeof (items) != 'string' || typeof (items) === null || items === ''); {
+            alert("Something goes wrong");
+        } else {
+            appData.income = items.split(', ');
+            appData.income.push(prompt('Something else?', ''));
+            appData.income.sort();
+        }
     }
+   appData.income.forEach(function(yo , y) {
+        alert("Способы доп. заработка: " + (y+1)  + '; взято из: ' + yo );}),
+    // 
     // Написать проверку, что пользователь может:
     // Ввести в дополнительных доходах (chooseIncome) только строку
     // Не может оставить строку пустой
@@ -127,14 +133,14 @@ let appData = {
 
 // ·        Товары должны начинаться с 1, а не с 0. Выполняем этот пункт в chooseIncome.
 
-    let y = 1 ;
-   do {appData[chooseIncome].forEach(function(y , yo, mass) {
-    alert("Способы доп. заработка: " + y + ' - ' + '; взято из: ' + yo );
-});
-y++;
-} while (y < appData.chooseIncome.length);
+
+       
+    
+
+
 
 // 3) Используя цикл for in для объекта (appData) вывести в консоль сообщение "Наша программа включает в себя данные: " (вывести весь appData)
 for (let sym in appData){
-    console.log("Наша программа включает в себя данные: "+ sym + appData);
+    console.log("Наша программа включает в себя данные: "+ sym + ' - '+ appData);
 }
+    
